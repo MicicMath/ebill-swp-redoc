@@ -1,10 +1,15 @@
 # Create Business Case For Advice Type
+
+Add ToC here
+
+## URLs
+
 ```http request
  URL:           https://api.ebill.billte.ch/swp/v1/billers/business-cases
  Method :        POST
  Auth required : YES(Bearer token)
 ```
-##Request Parameters
+## Request Parameters
 
 | Parameter 	| Type 	| Required 	| Description 	|
 |---	|---	|---	|---	|
@@ -19,7 +24,8 @@
 | totalAmount 	| Object 	| true 	| ```Total amount``` object contains properties:<br>   <br><br>        1 ```currency```:<br>                type:String<br>                Defination:<br> <br>                 Currency code according to ISO 4217<br>                 When using QR-IBAN or ESR-participant number, only CHF and EUR are<br>                 allowed.<br><br>    <br>         2 ```value```:<br>                  type:String<br>                  Defination:<br>                       <br>                    Amount (max. 99'999'999.99). Field does not have to be provided when using<br>                    IBAN or QR-IBAN (compatibility with QR-bill).<br>                    If amount is existing, it must be > 0. 	|
 | workflow 	| Object 	| false 	| Information about the workflow. Auxiliary data that can be used for pre-registering<br>an invoice in bookkeeping.<br> <br>   ***worlflow object contains properties***:<br>         1: amountPaid<br>             type:Object<br>             Required:true<br>              Defination:<br>             Sum of the amount that was paid by the invoice recipient in advance (without<br>              VAT-relevant advance invoice). The outstanding total invoice amount to be paid.<br>               corresponds to the element "totalAmount".<br><br>                ```amountPaid contains Properties```:<br>                    1.1 ```currencyCode```<br>                             Required:true<br>                             Defination: Currency code according to ISO 4217<br>                    1.2 ```value```<br>                             Required:true<br>                             Defination: Give Amount<br><br>         2: caseReferenceForBillRecipient<br>               Required:false<br>               type:String<br>               Defination:                Association reference to be used by the invoice recipient to allocate the business<br>                case in his bookkeeping.<br>         3:   deliveryDateEnd<br>               Required:false<br>               type:String<br>               Defination:<br>                Delivery date or end date of the service provision<br>                   4:   deliveryDateStart<br>               Required:false<br>               type:String<br>               Defination:<br>                Start date of the service provision, in case it is different than deliveryDateEnd<br><br><br>           5: netAmount<br>             type:Object<br>             Required:true<br>              Defination:<br>                   Total invoice amount without VAT (e.g. CHF 1095.80)<br><br>  <br>  <br>            ```netAmount contains Properties```:<br>                    1.1 ```currencyCode```<br>                             Required:true<br>                             Defination: Currency code according to ISO 4217<br>                    1.2 ```value```<br>                             Required:true<br>                             Defination: Invoice amount without VAT<br>         6:   vatEnterpriseIdentificationNumbers<br>               Required:true<br>               type:Array of strings<br>               Defination:<br>                Value Added Tax Enterprise Identification Numbers (VAT-UIDs) of the invoice issuer<br><br>         7:   vatEnterpriseIdentificationNumbers<br>               Required:true<br>               type:Array of strings<br>               Defination:<br>                VAT information per VAT rate<br><br><br>      <br><br> <br><br><br><br>             <br><br><br>                                    	|
 
-###Sample Request
+## Sample Request (change this to Request Example)
+
 ```json
 {
       "billRecipient": {
@@ -53,7 +59,7 @@
 
 }
 ```
-###Response
+## Response Example
 
 ***Success Response***
 
